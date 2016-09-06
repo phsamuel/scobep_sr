@@ -123,7 +123,7 @@ end % for i
 %
 % Z0 = J;
 
-PSNR(J,double(gt(k_s:k_e,l_s:l_e)))
+% PSNR(J,double(gt(k_s:k_e,l_s:l_e)))
 
 
 %% Display
