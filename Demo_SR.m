@@ -1,4 +1,4 @@
-function Demo_SR( )
+% function Demo_SR( )
 % clear
 clc
 % close all
@@ -14,7 +14,7 @@ R_hat = 13;
 
 constant = 1;
 y = readframes();
-Y = initial (y,s);
+Y = myinitial (y,s);
 
 % k_s= 218+14+180 ;
 % k_e =  678-50-100;
@@ -99,6 +99,7 @@ bflt_img2 = bfilter2(img2,w,sigma);
 figure; imshow(bflt_img2,[]);
 %% Deblurring
 %  load BeforeDeblurring.mat
+k_s=1; k_e=240; l_s=1; l_e=351;
 Z10 = Z0(k_s:k_e,l_s:l_e);
 J=Z10;
 image = Z10;
@@ -130,23 +131,23 @@ figure;imshow(y(:,:,1,1),[]);
 figure;imshow(Y(:,:,1),[]);
 figure;imshow(Z0(ceil(l/2)+1:end-ceil(l/2)+1,ceil(l/2)+1:end-ceil(l/2)+1),[]);
 figure;imshow(J,[]);
+% 
+% end
 
-end
 
-
-function [Y] = initial (y,s)
-% for i =1 : size(y,4)
-  for i =1 : size(y,3)  
-%     Y(:,:,i) = imresize(y(:,:,:,i),s,'lanczos3'); FORman
-    Y(:,:,i) = imresize(y(:,:,i),s,'lanczos3');
-    %         repmat
-    %         temp = YY(:,:,i);
-    %         temp = [repmat(temp(:,1),[1,k]), temp];
-    %         temp=[temp, repmat(temp(:,size(temp,2)),[1,k])];
-    %
-    %         temp = [repmat(temp(1,:),[l,1]); temp];
-    %         temp=[temp; repmat(temp(size(temp,1),:),[l,1])];
-    %
-    %         Y(:,:,i) = temp;
-end
-end
+% function [Y] = initial (y,s)
+% % for i =1 : size(y,4)
+%   for i =1 : size(y,3)  
+% %     Y(:,:,i) = imresize(y(:,:,:,i),s,'lanczos3'); FORman
+%     Y(:,:,i) = imresize(y(:,:,i),s,'lanczos3');
+%     %         repmat
+%     %         temp = YY(:,:,i);
+%     %         temp = [repmat(temp(:,1),[1,k]), temp];
+%     %         temp=[temp, repmat(temp(:,size(temp,2)),[1,k])];
+%     %
+%     %         temp = [repmat(temp(1,:),[l,1]); temp];
+%     %         temp=[temp; repmat(temp(size(temp,1),:),[l,1])];
+%     %
+%     %         Y(:,:,i) = temp;
+% end
+% end
